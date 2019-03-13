@@ -9,6 +9,7 @@
   "author": "Alessio Delmonti",
   "license": "MIT",
   "devDependencies": {
+    "zos": "^2.2.1",
     "zos-lib": "^2.2.1"
   },
   "dependencies": {
