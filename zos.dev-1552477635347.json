@@ -1,0 +1,106 @@
+{
+  "contracts": {
+    "Gateway": {
+      "address": "0xEeB3A6143B71b9eBc867479f2cf57DB0bE4604C2",
+      "constructorCode": "608060405234801561001057600080fd5b506102ad806100206000396000f3fe",
+      "bodyBytecodeHash": "87a1c85a54a290e8a31cb744e220cd8dee8fc2551841f0912a1d9f39aaa376be",
+      "localBytecodeHash": "c9f8e62b766b3b3e5fd796a3398d4aa89eb82e2d72b64c98ffd14d7cf844e7a5",
+      "deployedBytecodeHash": "c9f8e62b766b3b3e5fd796a3398d4aa89eb82e2d72b64c98ffd14d7cf844e7a5",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_address": {
+          "id": "t_address",
+          "kind": "elementary",
+          "label": "address"
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initialized",
+          "astId": 108,
+          "type": "t_bool",
+          "src": "757:24:2"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initializing",
+          "astId": 110,
+          "type": "t_bool",
+          "src": "876:25:2"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "______gap",
+          "astId": 159,
+          "type": "t_array:50<t_uint256>",
+          "src": "1891:29:2"
+        },
+        {
+          "contract": "Gateway",
+          "path": "contracts/Gateway.sol",
+          "label": "_owner",
+          "astId": 7,
+          "type": "t_address",
+          "src": "234:22:0"
+        },
+        {
+          "contract": "Gateway",
+          "path": "contracts/Gateway.sol",
+          "label": "x",
+          "astId": 9,
+          "type": "t_uint256",
+          "src": "262:16:0"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": false,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": false,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": []
+      }
+    }
+  },
+  "solidityLibs": {},
+  "proxies": {
+    "dexpay/gateway/Gateway": [
+      {
+        "address": "0x0741fB496E58A1Fbc8cb9Ef9E096393e62582613",
+        "version": "0.1.0",
+        "implementation": "0xEeB3A6143B71b9eBc867479f2cf57DB0bE4604C2"
+      }
+    ]
+  },
+  "zosversion": "2.2",
+  "version": "0.1.0",
+  "dependencies": {
+    "openzeppelin-eth": {
+      "package": "0x07a457d878BF363E0Bb5aa0B096092f941e19962",
+      "version": "2.1.3",
+      "customDeploy": true
+    }
+  },
+  "proxyAdmin": {
+    "address": "0x321DD22870b5DF733a30498763a2A43FEda8A5F4"
+  }
+}

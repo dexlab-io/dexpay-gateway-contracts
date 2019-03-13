@@ -1,0 +1,17 @@
+{
+  "name": "dexpay-gateway-contracts",
+  "version": "0.0.1",
+  "description": "Decentralized Payment Gateway for Dexpay",
+  "main": "truffle-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alessio Delmonti",
+  "license": "MIT",
+  "devDependencies": {
+    "zos-lib": "^2.2.1"
+  },
+  "dependencies": {
+    "openzeppelin-eth": "^2.1.3"
+  }
+}

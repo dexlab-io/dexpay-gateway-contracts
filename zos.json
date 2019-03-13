@@ -1,0 +1,11 @@
+{
+  "zosversion": "2.2",
+  "name": "dexpay/gateway",
+  "version": "0.1.0",
+  "contracts": {
+    "Gateway": "Gateway"
+  },
+  "dependencies": {
+    "openzeppelin-eth": "^2.1.3"
+  }
+}
