@@ -3,9 +3,11 @@ pragma solidity ^0.5.0;
 import "openzeppelin-eth/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 import "zos-lib/contracts/Initializable.sol";
+import "./DexI.sol";
 
 contract Gateway is Initializable, Ownable {
     uint256 public serviceFee;
+    DexI private X;
     mapping(address => mapping(uint => PaymentObj)) public payment;
     
     struct PaymentObj {
@@ -19,8 +21,9 @@ contract Gateway is Initializable, Ownable {
 
     event ProofOfPayment(address indexed _payer, address indexed seller, address _token, uint _amount, bytes32 _data);
 
-    function initialize() public initializer {
+    function initialize(address Dex) public initializer {
         serviceFee = 0;
+        X = DexI(Dex);
     }
 
     function isOrderPaid(address _sellerAddress, uint _orderId, uint256 amount, address token) public view returns(bool success){
