@@ -464,7 +464,22 @@
     }
   },
   "solidityLibs": {},
-  "proxies": {},
+  "proxies": {
+    "dexpay/gateway/GlobalVar": [
+      {
+        "address": "0x53E2728C163F5ff20Cb861ce29B22577f740C7B0",
+        "version": "0.1.0",
+        "implementation": "0xA4A541Cb7E965fCe15C90a5DA1663216C665AC37"
+      }
+    ],
+    "dexpay/gateway/Gateway": [
+      {
+        "address": "0x79E415B6E4618c92cE32647975EaF994cDdab6E3",
+        "version": "0.1.0",
+        "implementation": "0x0D9D1fddbaaB4b5a65B419F2B052a1759CB1B3Ec"
+      }
+    ]
+  },
   "zosversion": "2.2",
   "dependencies": {
     "openzeppelin-eth": {
@@ -473,5 +488,8 @@
       "customDeploy": true
     }
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "proxyAdmin": {
+    "address": "0x02d39fD75cc03Eb45bB4A69Bc541CC47D9C3d054"
+  }
 }

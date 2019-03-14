@@ -38,5 +38,9 @@ An important thing to understand is that the contracts deployed by the push comm
 
 Create an upgradeable instance for the logic contract, and interact with this instance instead.
 ```
-zos create Gateway --init initialize --args 42
+zos create GlobalVar --init --args 0x818E6FECD516Ecc3849DAf6845e3EC868087B755,0x4BFBa4a8F28755Cb2061c413459EE562c6B9c51b,0xaD6D458402F60fD3Bd25163575031ACDce07538D,0xDb0040451F373949A4Be60dcd7b6B8D6E42658B6,0x4E470dc7321E84CA96FcAEDD0C8aBCebbAEB68C6
+
+zos create Dex --init //This will fail on local
+
+zos create Gateway --init initialize --args <Dex_Contract_Address>
 ```

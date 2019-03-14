@@ -7,7 +7,6 @@ contract GlobalVar is Initializable{
     * Address Exchanges
     */
     address public KyberAddress; // = 0x818E6FECD516Ecc3849DAf6845e3EC868087B755KN Proxy, same for ropsten and mainnet
-    
     address public ETHToken; // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
     address public OMGtoken; // 0x4BFBa4a8F28755Cb2061c413459EE562c6B9c51b;
     address public DAItoken; // 0xaD6D458402F60fD3Bd25163575031ACDce07538D;
