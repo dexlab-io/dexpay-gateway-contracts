@@ -4,8 +4,9 @@ import "openzeppelin-eth/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 import "zos-lib/contracts/Initializable.sol";
 import "./DexI.sol";
+import './GlobalVar.sol';
 
-contract Gateway is Initializable, Ownable {
+contract Gateway is Initializable, Ownable, GlobalVar {
     uint256 public serviceFee;
     DexI private X;
     mapping(address => mapping(uint => PaymentObj)) public payment;
@@ -37,7 +38,7 @@ contract Gateway is Initializable, Ownable {
         return true;
     }
 
-    function payWithEth(address seller, uint _orderId, uint256 amount, bool _autoEx) public payable returns  (bool success){
+    function payWithEth(address payable seller, uint _orderId, uint256 amount, bool _autoEx) public payable returns  (bool success){
         require(seller != address(0), "Seller is an empty address"); 
         require(msg.value > 0 && msg.value == amount, "msg.value doesn not match amount");
 
@@ -47,15 +48,15 @@ contract Gateway is Initializable, Ownable {
         }
 
         if(shouldExchange == true) {
-            require(X.tradeKyber.value(msg.value)(X.ETHToken, amount, X.DAItoken, seller), "Exchange failed");
+            X.tradeKyber.value(msg.value)(ETHToken, amount, DAItoken, seller);
         } else {
-            require(seller.transfer(msg.value), "Transfer to seller failed");
+            seller.transfer(msg.value);
         }
         
         bytes32 data = keccak256(abi.encodePacked( seller,_orderId ) );
             
-        payment[seller][_orderId] = PaymentObj(msg.sender, seller, X.ETHToken, amount, data, true);
-        emit ProofOfPayment(msg.sender, seller, GOToken, amount, data);
+        payment[seller][_orderId] = PaymentObj(msg.sender, seller, ETHToken, amount, data, true);
+        emit ProofOfPayment(msg.sender, seller, ETHToken, amount, data);
         return true;
     }
 

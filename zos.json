@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "contracts": {
     "Gateway": "Gateway",
-    "Dex": "Dex"
+    "Dex": "Dex",
+    "GlobalVar": "GlobalVar"
   },
   "dependencies": {
     "openzeppelin-eth": "^2.1.3"

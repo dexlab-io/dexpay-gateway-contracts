@@ -4,21 +4,7 @@ import "openzeppelin-eth/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 import "zos-lib/contracts/Initializable.sol";
 import './KyberNetworkI.sol';
-
-contract GlobalVar {
-    /**
-    * Address Exchanges
-    */
-    address public KyberAddress = 0x818E6FECD516Ecc3849DAf6845e3EC868087B755; // KN Proxy, same for ropsten and mainnet
-    address public ED_contract = 0x8d12A197cB00D4747a1fe03395095ce2A5CC6819;
-    address public ED_contract_ropsten = 0x228344536a03C0910Fb8Be9C2755c1a0bA6f89E1;
-    
-    address public ETHToken = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
-    address public OMGtoken = 0x4BFBa4a8F28755Cb2061c413459EE562c6B9c51b;
-    address public DAItoken = 0xaD6D458402F60fD3Bd25163575031ACDce07538D;
-    address public BATtoken = 0xDb0040451F373949A4Be60dcd7b6B8D6E42658B6;
-    address public KNCtoken = 0x4E470dc7321E84CA96FcAEDD0C8aBCebbAEB68C6;
-}
+import './GlobalVar.sol';
 
 contract Dex is Initializable, Ownable, GlobalVar {
     uint256 public serviceFee;
