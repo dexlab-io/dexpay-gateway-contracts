@@ -22,28 +22,27 @@ contract GlobalVar {
 
 contract Dex is Initializable, Ownable, GlobalVar {
     uint256 public serviceFee;
-    address public KyberAddress;
     KyberNetworkI private kyberExchange;
 
-    function initialize(address KyberAddress) public initializer {
+    function initialize() public initializer {
         serviceFee = 0;
         kyberExchange = KyberNetworkI(KyberAddress);
 
         //Preapprove Tokens
-        ERC20Interface OMGtkn = IERC20(OMGtoken);
+        IERC20 OMGtkn = IERC20(OMGtoken);
         OMGtkn.approve(KyberAddress, 2**256 - 1);
         
-        ERC20Interface KNCtkn = IERC20(KNCtoken);
+        IERC20 KNCtkn = IERC20(KNCtoken);
         KNCtkn.approve(KyberAddress, 2**256 - 1);
         
-        ERC20Interface BATtkn = IERC20(BATtoken);
+        IERC20 BATtkn = IERC20(BATtoken);
         BATtkn.approve(KyberAddress, 2**256 - 1);
         
-        ERC20Interface DAItkn = IERC20(DAItoken);
+        IERC20 DAItkn = IERC20(DAItoken);
         DAItkn.approve(KyberAddress, 2**256 - 1);
     }
 
-    function approve(ERC20Interface erc20, address spender, uint tokens) public onlyOwner returns (bool success) {
+    function approve(IERC20 erc20, address spender, uint tokens) public onlyOwner returns (bool success) {
         require(erc20.approve(spender, tokens), "Token Aprove aborted");
         return true;
     }
@@ -55,7 +54,7 @@ contract Dex is Initializable, Ownable, GlobalVar {
     }
 
     function withdrawTokens(IERC20 token) public onlyOwner returns (bool success) {
-        uint256 balance = token.balanceOf(this);
+        uint256 balance = token.balanceOf(address(this));
 
         // Double checking
         require(balance > 0, "Balance is zero");
@@ -109,10 +108,10 @@ contract Dex is Initializable, Ownable, GlobalVar {
             source, // eth token in kyber
             amountToSend, //amount of tokens to convert. If sending ETH must be equal to msg.value. Otherwise, must not be higher than user token allowance to kyber network contract address.
             dest, 
-            this,
+            address(this),
             2**256 - 1, //maxDestAmount: maximum destination amount. The actual converted amount will be the minimum of srcAmount and required amount to get maxDestAmount of dest tokens. For an exchange application, we recommend to set it to MAX_UINT (i.e., 2**256 - 1).
             1, //minConversionRate: the minimal conversion rate. If the current rate is too high, then the transaction is reverted. For an exchange application this value can be set according to the priceSlippage return value of getExpectedRate. However, in this case, the execution of the transaction is not guaranteed in case big changes in market price happens before the confirmation of the transaction. A value of 1 will execute the trade according to market price in the time of the transaction confirmation.
-            0
+            0x398d297BAB517770feC4d8Bb7a4127b486c244bB
         );
         
         

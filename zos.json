@@ -3,7 +3,8 @@
   "name": "dexpay/gateway",
   "version": "0.1.0",
   "contracts": {
-    "Gateway": "Gateway"
+    "Gateway": "Gateway",
+    "Dex": "Dex"
   },
   "dependencies": {
     "openzeppelin-eth": "^2.1.3"
