@@ -60,6 +60,23 @@ contract Gateway is Initializable, Ownable, GlobalVar {
         return true;
     }
 
+    function payWithToken(address seller, uint _orderId, uint256 amount, address token, bool _autoEx) public payable returns  (bool success){
+      require(seller != address(0)); 
+      require(token != address(0));
+      
+      IERC20 tokenInstance = IERC20(token);
+      
+      //Do we have allowance?
+      require(tokenInstance.allowance(msg.sender, address(this)) >= amount);
+      require(tokenInstance.transferFrom(msg.sender, seller, amount));
+      
+      bytes32 data = keccak256(abi.encodePacked( seller,_orderId ) );
+          
+      payment[seller][_orderId] = PaymentObj(msg.sender, seller, token, amount, data, true);
+      emit ProofOfPayment(msg.sender, seller, token, amount, data);
+      return true;
+    }
+
     function () external payable {
 
     }
