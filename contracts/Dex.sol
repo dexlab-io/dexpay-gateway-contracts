@@ -15,17 +15,17 @@ contract Dex is Initializable, Ownable, GlobalVar {
         kyberExchange = KyberNetworkI(KyberAddress);
 
         //Preapprove Tokens
-        IERC20 OMGtkn = IERC20(OMGtoken);
-        OMGtkn.approve(KyberAddress, 2**256 - 1);
+        // IERC20 OMGtkn = IERC20(OMGtoken);
+        // OMGtkn.approve(KyberAddress, 2**256 - 1);
         
-        IERC20 KNCtkn = IERC20(KNCtoken);
-        KNCtkn.approve(KyberAddress, 2**256 - 1);
+        // IERC20 KNCtkn = IERC20(KNCtoken);
+        // KNCtkn.approve(KyberAddress, 2**256 - 1);
         
-        IERC20 BATtkn = IERC20(BATtoken);
-        BATtkn.approve(KyberAddress, 2**256 - 1);
+        // IERC20 BATtkn = IERC20(BATtoken);
+        // BATtkn.approve(KyberAddress, 2**256 - 1);
         
-        IERC20 DAItkn = IERC20(DAItoken);
-        DAItkn.approve(KyberAddress, 2**256 - 1);
+        // IERC20 DAItkn = IERC20(DAItoken);
+        // DAItkn.approve(KyberAddress, 2**256 - 1);
     }
 
     function approve(IERC20 erc20, address spender, uint tokens) public onlyOwner returns (bool success) {

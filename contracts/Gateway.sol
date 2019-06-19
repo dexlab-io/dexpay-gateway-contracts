@@ -27,10 +27,9 @@ contract Gateway is Initializable, Ownable, GlobalVar {
         X = DexI(Dex);
     }
 
-    function isOrderPaid(address _sellerAddress, uint _orderId, uint256 amount, address token) public view returns(bool success){
+    function isOrderPaid(address _sellerAddress, uint _orderId, uint256 amount) public view returns(bool success){
         return payment[_sellerAddress][_orderId].isPaid && 
-            payment[_sellerAddress][_orderId]._amount == amount &&
-            payment[_sellerAddress][_orderId]._token == token;
+            payment[_sellerAddress][_orderId]._amount == amount;
     }
 
     function setFee(uint256 fee) public onlyOwner returns (bool success) {
@@ -42,12 +41,7 @@ contract Gateway is Initializable, Ownable, GlobalVar {
         require(seller != address(0), "Seller is an empty address"); 
         require(msg.value > 0 && msg.value == amount, "msg.value doesn not match amount");
 
-        bool shouldExchange = false;
         if(_autoEx == true) {
-            shouldExchange = true;
-        }
-
-        if(shouldExchange == true) {
             X.tradeKyber.value(msg.value)(ETHToken, amount, DAItoken, seller);
         } else {
             seller.transfer(msg.value);
@@ -60,7 +54,7 @@ contract Gateway is Initializable, Ownable, GlobalVar {
         return true;
     }
 
-    function payWithToken(address seller, uint _orderId, uint256 amount, address token, bool _autoEx) public payable returns  (bool success){
+    function payWithToken(address seller, uint _orderId, uint256 amount, address token) public payable returns  (bool success){
       require(seller != address(0)); 
       require(token != address(0));
       
